@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{3f90b1eb-046d-4092-afdb-e62e512264e3}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{5c17b9cf-0612-4800-9566-1d2b6532672c}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="kdtree">
+      <UniqueIdentifier>{018eb4f3-fadb-4a84-94d5-4d2d31f84c55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ldpMat">
+      <UniqueIdentifier>{e030c3d5-1432-4342-a16a-7c5fd86e9f6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="camera">
+      <UniqueIdentifier>{0b26a369-2ff9-4b51-9b1e-8afe5b9ddc43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="TriMesh">
+      <UniqueIdentifier>{34f9fbd9-5b4d-4868-bf2b-7fa244f1a69b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SCMesh">
+      <UniqueIdentifier>{d60c107a-8e70-47a5-ab50-bdacd43603c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MyUtil">
+      <UniqueIdentifier>{96a27b0e-80b8-4709-b9a1-773b5c90ef17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{4b3076a7-9ac3-465e-bf97-05664aa60ba4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="embededdeformation3d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_embededdeformation3d.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_embededdeformation3d.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_embededdeformation3d.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MeshViewer.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MeshViewer.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="ArcBall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="glm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Deformer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kdtree\AABB.cpp">
+      <Filter>kdtree</Filter>
+    </ClCompile>
+    <ClCompile Include="kdtree\KdTree.cpp">
+      <Filter>kdtree</Filter>
+    </ClCompile>
+    <ClCompile Include="kdtree\Primitive.cpp">
+      <Filter>kdtree</Filter>
+    </ClCompile>
+    <ClCompile Include="camera\Camera.cpp">
+      <Filter>camera</Filter>
+    </ClCompile>
+    <ClCompile Include="drag_rect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\apparentridge.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\diffuse.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\edgeflip.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\faceflip.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\filter.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\lmsmooth.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\remove.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\reorder_verts.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\subdiv.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\TriMesh_bounding.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\TriMesh_connectivity.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\TriMesh_curvature.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\TriMesh_grid.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\TriMesh_io.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\TriMesh_normals.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\TriMesh_pointareas.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\TriMesh_stats.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\TriMesh_tstrips.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriMesh\KDtree.cc">
+      <Filter>TriMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="SCMesh\SCMesh.cpp">
+      <Filter>SCMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="MyUtil\MyMaterial.cpp">
+      <Filter>MyUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="MyUtil\MyPara.cpp">
+      <Filter>MyUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader\glsl.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader\glslprogram.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader\ShaderManager.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="embededdeformation3d.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="embededdeformation3d.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="embededdeformation3d.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MeshViewer.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_embededdeformation3d.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArcBall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_Structure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="glm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Deformer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kdtree\AABB.h">
+      <Filter>kdtree</Filter>
+    </ClInclude>
+    <ClInclude Include="kdtree\BSphere.h">
+      <Filter>kdtree</Filter>
+    </ClInclude>
+    <ClInclude Include="kdtree\common.h">
+      <Filter>kdtree</Filter>
+    </ClInclude>
+    <ClInclude Include="kdtree\KdTree.h">
+      <Filter>kdtree</Filter>
+    </ClInclude>
+    <ClInclude Include="kdtree\nanoflann.hpp">
+      <Filter>kdtree</Filter>
+    </ClInclude>
+    <ClInclude Include="kdtree\PointTree.h">
+      <Filter>kdtree</Filter>
+    </ClInclude>
+    <ClInclude Include="kdtree\Primitive.h">
+      <Filter>kdtree</Filter>
+    </ClInclude>
+    <ClInclude Include="kdtree\Ray.h">
+      <Filter>kdtree</Filter>
+    </ClInclude>
+    <ClInclude Include="ldpMat\ldp_basic_mat.h">
+      <Filter>ldpMat</Filter>
+    </ClInclude>
+    <ClInclude Include="ldpMat\ldp_basic_vec.h">
+      <Filter>ldpMat</Filter>
+    </ClInclude>
+    <ClInclude Include="ldpMat\ldpdef.h">
+      <Filter>ldpMat</Filter>
+    </ClInclude>
+    <ClInclude Include="ldpMat\Quaternion.h">
+      <Filter>ldpMat</Filter>
+    </ClInclude>
+    <ClInclude Include="camera\Camera.h">
+      <Filter>camera</Filter>
+    </ClInclude>
+    <ClInclude Include="camera\fmath.h">
+      <Filter>camera</Filter>
+    </ClInclude>
+    <ClInclude Include="drag_rect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TriMesh\apparentridge.h">
+      <Filter>TriMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TriMesh\bsphere.h">
+      <Filter>TriMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TriMesh\Color.h">
+      <Filter>TriMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TriMesh\lineqn.h">
+      <Filter>TriMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TriMesh\mempool.h">
+      <Filter>TriMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TriMesh\timestamp.h">
+      <Filter>TriMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TriMesh\TriMesh.h">
+      <Filter>TriMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TriMesh\TriMesh_algo.h">
+      <Filter>TriMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TriMesh\Vec.h">
+      <Filter>TriMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TriMesh\XForm.h">
+      <Filter>TriMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TriMesh\KDtree.h">
+      <Filter>TriMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="SCMesh\SCMesh.h">
+      <Filter>SCMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="MyUtil\MyMacro.h">
+      <Filter>MyUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="MyUtil\MyMaterial.h">
+      <Filter>MyUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="MyUtil\MyPara.h">
+      <Filter>MyUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader\glsl.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader\glslprogram.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader\ShaderManager.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

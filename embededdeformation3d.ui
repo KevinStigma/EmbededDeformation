@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EmbededDeformation3DClass</class>
+ <widget class="QMainWindow" name="EmbededDeformation3DClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>978</width>
+    <height>866</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>EmbededDeformation3D</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="MeshViewer" name="render_widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>800</width>
+      <height>766</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>10</y>
+      <width>111</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Show</string>
+    </property>
+    <widget class="QCheckBox" name="MeshShow">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Mesh</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="NormalShow">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Normal</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="TriangleShow">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Triangle</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="GraphNodeShow">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>81</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Graph Node</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="DeformNodeShow">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>100</y>
+       <width>91</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Deform Node</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="BoxShow">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>120</y>
+       <width>91</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Box</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="plusButton">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>300</y>
+      <width>41</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>+</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="minusButton">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>300</y>
+      <width>41</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>280</y>
+      <width>41</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>160</y>
+      <width>101</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>Weight</string>
+    </property>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Rot</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>21</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Reg</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>21</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Con</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="RotEdit">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>20</y>
+       <width>51</width>
+       <height>16</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="RegEdit">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>40</y>
+       <width>51</width>
+       <height>16</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="ConEdit">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>60</y>
+       <width>51</width>
+       <height>16</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="DefineWeight">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>80</y>
+       <width>61</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Define</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>978</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionImport_Mesh"/>
+    <addaction name="actionImport_Mesh_Batch"/>
+    <addaction name="actionImport_Graph"/>
+    <addaction name="actionExport_Graph"/>
+    <addaction name="actionInput_Box_Info"/>
+    <addaction name="actionOutput_Box_Info"/>
+   </widget>
+   <widget class="QMenu" name="menuShader">
+    <property name="title">
+     <string>Shader</string>
+    </property>
+    <addaction name="actionNone"/>
+    <addaction name="actionOrennayar"/>
+    <addaction name="actionGlass"/>
+    <addaction name="actionXray"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuShader"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionImport_Mesh">
+   <property name="text">
+    <string>Import Mesh</string>
+   </property>
+  </action>
+  <action name="actionImport_Mesh_Batch">
+   <property name="text">
+    <string>Import Mesh Batch</string>
+   </property>
+  </action>
+  <action name="actionImport_Graph">
+   <property name="text">
+    <string>Import Graph Info</string>
+   </property>
+  </action>
+  <action name="actionExport_Graph">
+   <property name="text">
+    <string>Export Graph Info</string>
+   </property>
+  </action>
+  <action name="actionInput_Box_Info">
+   <property name="text">
+    <string>Input Box Info</string>
+   </property>
+  </action>
+  <action name="actionOutput_Box_Info">
+   <property name="text">
+    <string>Output Box Info</string>
+   </property>
+  </action>
+  <action name="actionNone">
+   <property name="text">
+    <string>none</string>
+   </property>
+  </action>
+  <action name="actionOrennayar">
+   <property name="text">
+    <string>orennayar</string>
+   </property>
+  </action>
+  <action name="actionGlass">
+   <property name="text">
+    <string>glass</string>
+   </property>
+  </action>
+  <action name="actionXray">
+   <property name="text">
+    <string>xray</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>MeshViewer</class>
+   <extends>QWidget</extends>
+   <header>MeshViewer.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="embededdeformation3d.qrc"/>
+ </resources>
+ <connections/>
+</ui>
