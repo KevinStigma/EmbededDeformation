@@ -168,6 +168,7 @@
     <ClCompile Include="kdtree\Primitive.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshViewer.cpp" />
+    <ClCompile Include="MyArcball.cpp" />
     <ClCompile Include="MyUtil\MyMaterial.cpp" />
     <ClCompile Include="MyUtil\MyPara.cpp" />
     <ClCompile Include="SCMesh\SCMesh.cpp" />
@@ -256,6 +257,7 @@
     <ClInclude Include="ldpMat\ldp_basic_mat.h" />
     <ClInclude Include="ldpMat\ldp_basic_vec.h" />
     <ClInclude Include="ldpMat\Quaternion.h" />
+    <ClInclude Include="MyArcball.h" />
     <ClInclude Include="MyUtil\MyMacro.h" />
     <ClInclude Include="MyUtil\MyMaterial.h" />
     <ClInclude Include="MyUtil\MyPara.h" />

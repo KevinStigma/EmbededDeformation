@@ -1,8 +1,8 @@
 #ifndef MESHVIEWER_H
 #define MESHVIEWER_h
-//#include "Shader/ShaderManager.h"
 #include "Data_Structure.h"
 #include "Shader/ShaderManager.h"
+#include "MyArcball.h"
 #include <Windows.h>
 #include <qgl.h>
 #include <GL/glut.h>
@@ -11,7 +11,6 @@
 #include <QMouseEvent>
 #include <QLineEdit>
 #include "Deformer.h"
-#include "ArcBall.h"
 #include "drag_rect.h"
 #include "MyUtil/MyPara.h"
 #include "TriMesh/TriMesh.h"
@@ -50,10 +49,6 @@ public:
 	void deform();
 	void plus_testID();
 	void minus_testID();
-	void plus_modifyX();
-	void minus_modifyX();
-	void plus_modifyY();
-	void minus_modifyY();
 	void generateNew_AABB();
 	void delete_AABB();
 	void delete_boxpair();
@@ -70,26 +65,6 @@ public:
 	void inputBoxes(const std::string&filename);
 	void readRenderInfo(const std::string& filename);
 protected:
-	struct MyArcball
-	{
-		ArcBallT    ArcBall;
-		Matrix4fT   Transform;
-		Matrix3fT   LastRot;
-		Matrix3fT   ThisRot;
-		Point2fT    MousePt;  
-		float		mRadius;
-		POINT		mLastMousePos;
-		int			buttonstate;
-		MyArcball(float w=800,float h=766):ArcBall(w,h),mRadius(0.0),buttonstate(0)
-		{
-			Matrix3fSetIdentity(&LastRot); 
-			Matrix3fSetIdentity(&ThisRot); 
-			Transform.M[0]=1.0f;Transform.M[1]=0.0f;Transform.M[2]=0.0f;Transform.M[3]=0.0f;
-			Transform.M[4]=0.0f;Transform.M[5]=1.0f;Transform.M[6]=0.0f;Transform.M[7]=0.0f;
-			Transform.M[8]=0.0f;Transform.M[9]=0.0f;Transform.M[10]=1.0f;Transform.M[11]=0.0f;
-			Transform.M[12]=0.0f;Transform.M[13]=0.0f;Transform.M[14]=0.0f;Transform.M[15]=1.0f;
-		}
-	};
 	typedef struct mBoxPair 
 	{
 		std::vector<int> box_id_list;
@@ -114,6 +89,7 @@ protected:
 	virtual void mousePressEvent(QMouseEvent*);
 	virtual void mouseReleaseEvent(QMouseEvent *);
 	virtual void mouseMoveEvent(QMouseEvent *);
+	void wheelEvent(QWheelEvent *event);
 
 	void renderModel();
 	void renderAABB();
@@ -138,7 +114,7 @@ private:
 	Vec3 m_init_pos;
 	Vec3 mesh_center;
 	bool mesh_show,triangle_show,normal_show,graph_show,deformnode_show,box_show;
-	MyArcball  z_arcball;
+	MyArcball  m_arcball;
 	Light	  light_des;
 	Material gray_material;
 	Material yellow_material;
@@ -165,8 +141,6 @@ private:
 	Deformer deformer;
 	drag_rect* m_pDragRect;
 	KEYSTATUS key_status;
-	float modify_y;
-	float modify_x;
 	float normal_length;
 	float translate_step;
 	double scale_step;

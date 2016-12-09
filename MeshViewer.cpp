@@ -4,12 +4,11 @@
 #include <limits> 
 
 MeshViewer::MeshViewer(QWidget* parent) :QGLWidget(parent),mesh_center(0,0,0),mesh_show(true),normal_show(false),triangle_show(true),
-	graph_show(false),deformnode_show(false),testId(0),m_pDragRect(NULL),key_status(KEY_NONE),modify_x(0),modify_y(0),
-	cur_boxID(-1),cur_proxyID(-1),m_axis(-1),rotEdit(NULL),regEdit(NULL),conEdit(NULL),translate_step(0.1),scale_step(0.001),
-	m_init_pos(0,0,100),normal_length(0.5),load_success(false),curNodeId(-1),curNodeProxy(-1),m_GraphEdge(NULL),box_show(true)
+	graph_show(false),deformnode_show(false),testId(0),m_pDragRect(NULL),key_status(KEY_NONE),cur_boxID(-1),cur_proxyID(-1),m_axis(-1),
+	rotEdit(NULL),regEdit(NULL),conEdit(NULL),translate_step(0.1),scale_step(0.001),m_init_pos(0,0,100),normal_length(0.5),
+	load_success(false),curNodeId(-1),curNodeProxy(-1),m_GraphEdge(NULL),box_show(true),m_arcball(800,600)
 {
 	setFixedSize(800,766);
-	z_arcball.ArcBall.setBounds(width(),height());
 	initMaterial();
 
 	m_axis_dir[0]=Vec3(1,0,0);
@@ -32,7 +31,6 @@ MeshViewer::~MeshViewer()
 	delete_all_proxy();
 	
 	SAFE_DELETE(m_shader_manager);
-	//m_shader_manager.release();
 }
 
 void MeshViewer::setLineEdit(QLineEdit*rotl,QLineEdit*regl,QLineEdit*conl)
@@ -96,7 +94,6 @@ void MeshViewer::initializeGL()
 	initLighting();
 	//glBlendFunc(GL_SRC_ALPHA,GL_ONE);
 	 glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	//m_shader_manager->create("G:\\My Documents\\Visual Studio 2010\\Projects\\EmbededDeformation3D\\EmbededDeformation3D\\Shader\\");
 	 m_shader_manager->create("Shader\\");
 	//glBlendFunc(GL_ONE,GL_ZERO);
 }
@@ -120,16 +117,16 @@ void MeshViewer::paintGL()
 	target=Vec3(0.0f,0.0f,0.0f);
 	up=Vec3(0.0f,1.0f,0.0f);
 
-	Vec3 normal_dir=(target-pos).normalized();
-	pos+=normal_dir*z_arcball.mRadius;
+	//Vec3 normal_dir=(target-pos).normalized();
+	//pos+=normal_dir*m_arcball.mRadius;
+	pos(2)=pos(2)*m_arcball.mRadius;
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	gluLookAt(pos(0),pos(1),pos(2),target(0),target(1),target(2),up(0),up(1),up(2));
 
-	//glTranslatef(modify_x,modify_y,0.0f);
-	//glMultMatrixd(model_matrix);
-	glMultMatrixf(z_arcball.Transform.M);
+	glTranslatef(m_arcball.translate_x,m_arcball.translate_y,0.0f);
+	glMultMatrixf(m_arcball.Transform.M);
 
 	glPointSize(2.0f);
 	glPushMatrix();
@@ -163,23 +160,17 @@ void MeshViewer::mousePressEvent(QMouseEvent* event)
 	{
 		if(event->button()==Qt::LeftButton)
 		{
-			z_arcball.MousePt.s.X = posx;
-			z_arcball.MousePt.s.Y = posy;
+			m_arcball.MousePt.s.X = posx;
+			m_arcball.MousePt.s.Y = posy;
 
-			z_arcball.LastRot = z_arcball.ThisRot;                  
-			z_arcball.ArcBall.click(&z_arcball.MousePt);
-			z_arcball.buttonstate=1;
-
-			z_arcball.mLastMousePos.x=static_cast<LONG>(qpoint.x());
-			z_arcball.mLastMousePos.y=static_cast<LONG>(qpoint.y());
+			m_arcball.LastRot = m_arcball.ThisRot;                  
+			m_arcball.ArcBall.click(&m_arcball.MousePt);
+			m_arcball.button_status=1;
 		}
 		else if(event->button()==Qt::RightButton)
-		{
-			z_arcball.buttonstate=2;
-
-			z_arcball.mLastMousePos.x=static_cast<LONG>(qpoint.x());
-			z_arcball.mLastMousePos.y=static_cast<LONG>(qpoint.y());
-		}
+			m_arcball.button_status=2;
+		m_arcball.mLastMousePos.s.X=static_cast<LONG>(qpoint.x());
+		m_arcball.mLastMousePos.s.Y=static_cast<LONG>(qpoint.y());
 	}
 	else if(key_status==KEY_SELECT_POINT||key_status==KEY_DELETE_POINT||key_status==KEY_SELECT_BOX||key_status==KEY_SEL_NODE||key_status==KEY_SEL_BOXPAIR)
 	{
@@ -202,7 +193,7 @@ void MeshViewer::mouseReleaseEvent(QMouseEvent *)
 	QPoint qpoint=mapFromGlobal(QCursor::pos());
 	int posx=qpoint.x();
 	int posy=qpoint.y();
-	z_arcball.buttonstate=0;
+	m_arcball.button_status=0;
 
 	if(key_status==KEY_SELECT_POINT||key_status==KEY_DELETE_POINT)
 		sel_del_point();
@@ -239,25 +230,25 @@ void MeshViewer::mouseMoveEvent(QMouseEvent * event)
 
 	if(key_status==KEY_NONE)
 	{
-		if(z_arcball.buttonstate==1)
+		if(m_arcball.button_status==1)
 		{
-			z_arcball.MousePt.s.X = posx;
-			z_arcball.MousePt.s.Y = posy;
+			m_arcball.MousePt.s.X = posx;
+			m_arcball.MousePt.s.Y = posy;
 			Quat4fT     ThisQuat;
-			z_arcball.ArcBall.drag(&z_arcball.MousePt, &ThisQuat);                       
-			Matrix3fSetRotationFromQuat4f(&z_arcball.ThisRot, &ThisQuat);  
-			Matrix3fMulMatrix3f(&z_arcball.ThisRot, &z_arcball.LastRot);   
-			Matrix4fSetRotationFromMatrix3f(&z_arcball.Transform, &z_arcball.ThisRot); 
+			m_arcball.ArcBall.drag(&m_arcball.MousePt, &ThisQuat);                       
+			Matrix3fSetRotationFromQuat4f(&m_arcball.ThisRot, &ThisQuat);  
+			Matrix3fMulMatrix3f(&m_arcball.ThisRot, &m_arcball.LastRot);   
+			Matrix4fSetRotationFromMatrix3f(&m_arcball.Transform, &m_arcball.ThisRot); 
 		}
-		else if(z_arcball.buttonstate==2)
+		else if(m_arcball.button_status==2)
 		{
-			float dx = scale_step*static_cast<float>(posx - z_arcball.mLastMousePos.x);
-			float dy = scale_step*static_cast<float>(posy - z_arcball.mLastMousePos.y);
-
-			z_arcball.mRadius -= (dx - dy)*50;
+			float dx = 0.1f*static_cast<float>(qpoint.x() - m_arcball.mLastMousePos.s.X);
+			float dy = 0.1f*static_cast<float>(qpoint.y() - m_arcball.mLastMousePos.s.Y);
+			m_arcball.translate_x+=dx;
+			m_arcball.translate_y-=dy;
 		}
-		z_arcball.mLastMousePos.x = posx;
-		z_arcball.mLastMousePos.y = posy;
+		m_arcball.mLastMousePos.s.X = posx;
+		m_arcball.mLastMousePos.s.Y = posy;
 	}
 	else if(key_status==KEY_SELECT_POINT||key_status==KEY_DELETE_POINT||key_status==KEY_SELECT_BOX||key_status==KEY_SEL_NODE||key_status==KEY_SEL_BOXPAIR)
 	{
@@ -277,6 +268,12 @@ void MeshViewer::mouseMoveEvent(QMouseEvent * event)
 		else if(AABB[cur_boxID].bp_id!=-1)
 			deform_Pair(posx,posy,cur_boxID,AABB[cur_boxID].bp_id);
 	}
+}
+
+void MeshViewer::wheelEvent(QWheelEvent *event)
+{
+	float delta=(float)event->delta()/1500.0*scale_step*2;
+	m_arcball.mRadius *=  (1-delta);
 }
 
 void MeshViewer::sel_del_point()
@@ -659,7 +656,7 @@ void MeshViewer::adjustViewBasedProxy()
 
 	double ZL=maxZ-minZ,XL=maxX-minX,YL=maxY-minY;
 	double refL=(ZL+XL+YL)/3;
-	m_init_pos=Vec3(0,0,ZL*1.5);
+	m_init_pos=Vec3(0,0,ZL*4.0);
 	scale_step=refL*0.0003;
 	translate_step=refL*0.05;
 	normal_length=refL*0.05;
@@ -787,16 +784,18 @@ void MeshViewer::init_deform()
 
 void MeshViewer::resetView()
 {
-	z_arcball.mRadius=0.0;
-	Matrix3fSetIdentity(&z_arcball.LastRot); 
-	Matrix3fSetIdentity(&z_arcball.ThisRot); 
-	//Matrix4fSetRotationFromMatrix3f(&Transform, &ThisRot);
-	z_arcball.Transform.M[0]=1.0f;z_arcball.Transform.M[1]=0.0f;z_arcball.Transform.M[2]=0.0f;z_arcball.Transform.M[3]=0.0f;
-	z_arcball.Transform.M[4]=0.0f;z_arcball.Transform.M[5]=1.0f;z_arcball.Transform.M[6]=0.0f;z_arcball.Transform.M[7]=0.0f;
-	z_arcball.Transform.M[8]=0.0f;z_arcball.Transform.M[9]=0.0f;z_arcball.Transform.M[10]=1.0f;z_arcball.Transform.M[11]=0.0f;
-	z_arcball.Transform.M[12]=0.0f;z_arcball.Transform.M[13]=0.0f;z_arcball.Transform.M[14]=0.0f;z_arcball.Transform.M[15]=1.0f;
-	modify_x=0;
-	modify_y=0;
+	m_arcball.mRadius=1;
+	m_arcball.translate_x=m_arcball.translate_y=0;
+
+	for(int i=0;i<=3;i++)
+		for(int j=0;j<=3;j++)
+		{
+			int index=i*4+j;
+			if(i==j)
+				m_arcball.Transform.M[index]=1;
+			else
+				m_arcball.Transform.M[index]=0;
+		}
 }
 
 void MeshViewer::plus_testID()
@@ -813,23 +812,6 @@ void MeshViewer::minus_testID()
 	testId=deform_graph.size()-1;
 	else
 	testId--;*/
-}
-
-void MeshViewer::plus_modifyX()
-{
-	modify_x+=translate_step;
-}
-void MeshViewer::minus_modifyX()
-{
-	modify_x-=translate_step;
-}
-void MeshViewer::plus_modifyY()
-{
-	modify_y+=translate_step;
-}
-void MeshViewer::minus_modifyY()
-{
-	modify_y-=translate_step;
 }
 
 void MeshViewer::generateNew_AABB()

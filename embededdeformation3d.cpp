@@ -237,26 +237,6 @@ void EmbededDeformation3D::keyPressEvent(QKeyEvent *e)
 			ui.render_widget->delete_AABB();
 			break;
 		}
-	case Qt::Key_4:
-		{
-			ui.render_widget->minus_modifyX();
-			break;
-		}
-	case Qt::Key_6:
-		{
-			ui.render_widget->plus_modifyX();
-			break;
-		}
-	case Qt::Key_8:
-		{
-			ui.render_widget->plus_modifyY();
-			break;
-		}
-	case Qt::Key_5:
-		{
-			ui.render_widget->minus_modifyY();
-			break;
-		}
 	case Qt::Key_0:
 		{
 			ui.render_widget->readRenderInfo("render_info");

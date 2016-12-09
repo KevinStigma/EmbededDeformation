@@ -179,6 +179,9 @@
     <ClCompile Include="Shader\ShaderManager.cpp">
       <Filter>Shader</Filter>
     </ClCompile>
+    <ClCompile Include="MyArcball.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="embededdeformation3d.h">
@@ -311,6 +314,9 @@
     </ClInclude>
     <ClInclude Include="Shader\ShaderManager.h">
       <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="MyArcball.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

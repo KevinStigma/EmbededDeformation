@@ -34,7 +34,7 @@
 void ArcBall_t::_mapToSphere(const Point2fT* NewPt, Vector3fT* NewVec) const
 {
     Point2fT TempPt;
-    GLfloat length;
+    float length;
 
     //Copy paramter into temp point
     TempPt = *NewPt;
@@ -49,7 +49,7 @@ void ArcBall_t::_mapToSphere(const Point2fT* NewPt, Vector3fT* NewVec) const
     //If the point is mapped outside of the sphere... (length > radius squared)
     if (length > 1.0f)
     {
-        GLfloat norm;
+        float norm;
 
         //Compute a normalizing factor (radius / sqrt(length))
         norm    = 1.0f / FuncSqrt(length);
@@ -69,7 +69,7 @@ void ArcBall_t::_mapToSphere(const Point2fT* NewPt, Vector3fT* NewVec) const
 }
 
 //Create/Destroy
-ArcBall_t::ArcBall_t(GLfloat NewWidth, GLfloat NewHeight)
+ArcBall_t::ArcBall_t(float NewWidth, float NewHeight)
 {
     //Clear initial values
     this->StVec.s.X     =
